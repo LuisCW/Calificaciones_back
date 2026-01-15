@@ -58,3 +58,5 @@ Usa [docker-compose.hub.yml](docker-compose.hub.yml) (Descargar el archivo)
 
 ## Detener
 `docker compose down`
+
+Si al momento de iniciar hay error al cargar el backend revisar en logs en docker desktop ha que termine de iniciar el servidor backend (tarda de 10-20 segundos)
