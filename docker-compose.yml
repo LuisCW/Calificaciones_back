@@ -1,0 +1,40 @@
+services:
+  backend:
+    image: luiscepeda7/calificaciones-backend:1.0
+    container_name: calificaciones-backend
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/grades
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Abcdefghij123
+      SERVER_PORT: 8081
+      BASE_URL: http://backend:8081/api
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    networks:
+      - calificaciones-network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: calificaciones-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: grades
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Abcdefghij123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - calificaciones-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  calificaciones-network:
+    driver: bridge

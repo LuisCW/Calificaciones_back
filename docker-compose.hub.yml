@@ -1,0 +1,30 @@
+services:
+  backend:
+    image: luiscepeda7/calificaciones-backend:latest
+    container_name: calificaciones-backend
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/grades
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Abcdefghij123
+      SERVER_PORT: 8081
+      BASE_URL: http://backend:8081/api
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    networks:
+      - calificaciones-network
+
+  postgres:
+    image: luiscepeda7/calificaciones-db:latest
+    container_name: calificaciones-postgres
+    restart: always
+    ports:
+      - "5433:5432"
+    networks:
+      - calificaciones-network
+
+networks:
+  calificaciones-network:
+    driver: bridge

@@ -1,0 +1,53 @@
+# Calificaciones - Instrucciones (máx. 10 comandos)
+
+Repositorio: https://github.com/LuisCW/Calificaciones_back
+
+## Requisitos
+- Docker Desktop
+
+## Datos de prueba (.dump)
+- Archivo incluido: [db-dumps/grades.dump](db-dumps/grades.dump)
+
+**Restaurar dump (opcional):**
+1) `docker cp db-dumps/grades.dump calificaciones-postgres:/tmp/grades.dump`
+2) `docker exec -e PGPASSWORD=Abcdefghij123 -t calificaciones-postgres pg_restore -U postgres -d grades -c /tmp/grades.dump`
+
+---
+
+## Opción 1: Docker Hub (sin descargar código)
+Usa [docker-compose.hub.yml](docker-compose.hub.yml)
+
+**Comandos (máx. 6):**
+1) `docker compose -f docker-compose.hub.yml up -d`
+2) `docker exec -it calificaciones-backend python3 /app/cli_menu.py`
+
+**Resultado:**
+- API: http://localhost:8081/api
+
+---
+
+## Opción 2: Desde GitHub (repo completo)
+**Comandos (máx. 8):**
+1) `git clone https://github.com/LuisCW/Calificaciones_back`
+2) `cd Calificaciones_back`
+3) `docker compose up -d --build`
+4) `docker exec -it calificaciones-backend python3 /app/cli_menu.py`
+
+**Resultado:**
+- API: http://localhost:8081/api
+
+---
+
+## Opción 3: Localhost (sin Docker para backend)
+**Comandos (máx. 9):**
+1) `docker compose up -d postgres`
+2) `mvn spring-boot:run`
+3) `./run` (menú en Windows)
+
+**Resultado:**
+- API: http://localhost:8081/api
+
+---
+
+## Detener
+`docker compose down`
