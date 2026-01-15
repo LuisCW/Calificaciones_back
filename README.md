@@ -1,6 +1,8 @@
-# Calificaciones - Instrucciones (máx. 10 comandos)
+# Calificaciones - Instrucciones
 
 Repositorio: https://github.com/LuisCW/Calificaciones_back
+
+Estos comandos no solo permiten ejecutar correctamente el back-end y el db sino también interactuar con este antes de comprobarlo en el front-end
 
 ## Requisitos
 - Docker Desktop
@@ -8,16 +10,18 @@ Repositorio: https://github.com/LuisCW/Calificaciones_back
 ## Datos de prueba (.dump)
 - Archivo incluido: [db-dumps/grades.dump](db-dumps/grades.dump)
 
-**Restaurar dump (opcional):**
-1) `docker cp db-dumps/grades.dump calificaciones-postgres:/tmp/grades.dump`
-2) `docker exec -e PGPASSWORD=Abcdefghij123 -t calificaciones-postgres pg_restore -U postgres -d grades -c /tmp/grades.dump`
+**Restaurar dump:**
+1) `git clone https://github.com/LuisCW/Calificaciones_back`
+2) `cd Calificaciones_back`
+3) `docker cp db-dumps/grades.dump calificaciones-postgres:/tmp/grades.dump`
+4) `docker exec -e PGPASSWORD=Abcdefghij123 -t calificaciones-postgres pg_restore -U postgres -d grades -c /tmp/grades.dump`
 
 ---
 
 ## Opción 1: Docker Hub (sin descargar código)
-Usa [docker-compose.hub.yml](docker-compose.hub.yml)
+Usa [docker-compose.hub.yml](docker-compose.hub.yml) (Descargar el archivo)
 
-**Comandos (máx. 6):**
+**Comandos:**
 1) `docker compose -f docker-compose.hub.yml up -d`
 2) `docker exec -it calificaciones-backend python3 /app/cli_menu.py`
 
@@ -27,7 +31,7 @@ Usa [docker-compose.hub.yml](docker-compose.hub.yml)
 ---
 
 ## Opción 2: Desde GitHub (repo completo)
-**Comandos (máx. 8):**
+**Comandos:**
 1) `git clone https://github.com/LuisCW/Calificaciones_back`
 2) `cd Calificaciones_back`
 3) `docker compose up -d --build`
@@ -39,10 +43,12 @@ Usa [docker-compose.hub.yml](docker-compose.hub.yml)
 ---
 
 ## Opción 3: Localhost (sin Docker para backend)
-**Comandos (máx. 9):**
-1) `docker compose up -d postgres`
-2) `mvn spring-boot:run`
-3) `./run` (menú en Windows)
+**Comandos:**
+1) `git clone https://github.com/LuisCW/Calificaciones_back`
+2) `cd Calificaciones_back`
+3) `docker compose up -d postgres`
+4) `mvn spring-boot:run`
+5) `./run` (menú en Windows)
 
 **Resultado:**
 - API: http://localhost:8081/api
