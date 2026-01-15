@@ -19,10 +19,12 @@ def _request(method: str, path: str, payload: dict | None = None):
     req = Request(url, data=data, headers=headers, method=method)
     try:
         with urlopen(req, timeout=10) as resp:
-            body = resp.read().decode("utf-8")
+            charset = resp.headers.get_content_charset() or "utf-8"
+            body = resp.read().decode(charset, errors="replace")
             return json.loads(body) if body else None
     except HTTPError as exc:
-        detail = exc.read().decode("utf-8")
+        charset = exc.headers.get_content_charset() if exc.headers else "utf-8"
+        detail = exc.read().decode(charset, errors="replace")
         raise RuntimeError(detail or f"HTTP {exc.code}") from exc
     except URLError as exc:
         raise RuntimeError("No se pudo conectar al backend") from exc
