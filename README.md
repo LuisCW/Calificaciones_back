@@ -22,8 +22,9 @@ Estos comandos no solo permiten ejecutar correctamente el back-end y el db sino 
 Usa [docker-compose.hub.yml](docker-compose.hub.yml) (Descargar el archivo)
 
 **Comandos:**
-1) `docker compose -f docker-compose.hub.yml up -d`
-2) `docker exec -it calificaciones-backend python3 /app/cli_menu.py`
+1) `cd 'Carpeta en donde fue descargado el archivo docker-compose.hub.yml'`
+2) `docker compose -f docker-compose.hub.yml up -d`
+3) `docker exec -it calificaciones-backend python3 /app/cli_menu.py`
 
 **Resultado:**
 - API: http://localhost:8081/api
