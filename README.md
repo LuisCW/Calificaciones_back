@@ -23,7 +23,8 @@ Usa [docker-compose.hub.yml](docker-compose.hub.yml) (Descargar el archivo)
 
 **Comandos:**
 1) `curl -o docker-compose.hub.yml https://raw.githubusercontent.com/LuisCW/Calificaciones_back/main/docker-compose.hub.yml`
-2) `docker exec -it calificaciones-backend python3 /app/cli_menu.py`
+2) `docker compose -f docker-compose.hub.yml up -d`
+3) `docker exec -it calificaciones-backend python3 /app/cli_menu.py`
 
 **Resultado:**
 - API: http://localhost:8081/api
