@@ -19,7 +19,7 @@ Estos comandos no solo permiten ejecutar correctamente el back-end y el db sino 
 ---
 
 ## Opción 1: Docker Hub (sin descargar código)
-Usa [docker-compose.hub.yml](docker-compose.hub.yml) (Descargar el archivo)
+Usa [docker-compose.hub.yml](docker-compose.hub.yml) 
 
 **Comandos:**
 1) `curl -o docker-compose.hub.yml https://raw.githubusercontent.com/LuisCW/Calificaciones_back/main/docker-compose.hub.yml`
